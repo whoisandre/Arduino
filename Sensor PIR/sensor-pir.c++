@@ -1,10 +1,9 @@
-// C++ code
-//
+
 
 int ledVerde = 5;
 int ledVermelho = 3;
 int sensor = 2;
-int piezo = 4;
+int buzzer = 4;
 int deteccao = 0;
 
 void setup()
@@ -18,18 +17,23 @@ void setup()
 void loop()
 {
 	deteccao = digitalRead(sensor);
+  
       if(deteccao == HIGH) {
+
         digitalWrite(ledVerde, LOW);
         digitalWrite(ledVermelho, HIGH);
-      
-       
-        deteccao = digitalRead(sensor);
-         if(deteccao == LOW) {
+        tone(buzzer, 10, 100);
+        delay(100); 
+
+      } else {
+
           digitalWrite(ledVerde, HIGH);
           digitalWrite(ledVermelho, LOW);
+           noTone(buzzer);
+
          }
-      } 
+} 
   
   
- 
-  }
+
+  
